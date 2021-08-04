@@ -1,0 +1,8 @@
+Class name: Man
+Parent class: Command
+
+Responsibilities:
+* Display documentations of the command
+
+Collaborators:
+* Command

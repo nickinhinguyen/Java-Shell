@@ -1,0 +1,7 @@
+Class name: find
+
+Responsibilities:
+* Finds a specific file or directory
+
+Collaborators:
+* JShell

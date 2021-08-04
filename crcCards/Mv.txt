@@ -1,0 +1,9 @@
+Class name: mv
+Parent class: Command
+
+Responsibilities:
+* Move the contents from a old path to a new path
+
+Collaborators:
+* JShell
+* rec

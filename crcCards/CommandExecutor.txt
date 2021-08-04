@@ -1,0 +1,8 @@
+Class name: CommandExecutor
+
+Responsibilities:
+* Executes the command line
+
+Collaborators:
+* CommandReader
+* Command

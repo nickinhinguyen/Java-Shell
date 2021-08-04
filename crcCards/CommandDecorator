@@ -1,0 +1,8 @@
+Class name: CommandDecorator
+Sub-classes: Redirection, RecursiveDecorator
+
+Responsibilities:
+* Decorates command appropriately
+
+Collaborators:
+* Command

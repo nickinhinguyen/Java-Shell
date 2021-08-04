@@ -1,0 +1,10 @@
+Class name: Cd
+Parent class: Command
+
+Responsibilities:
+* Change current directory of the JShell
+* Raise exception if directory doesn't exist
+
+Collaborators:
+* JShellState
+* Directory

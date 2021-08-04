@@ -1,0 +1,9 @@
+Class name: Pwd
+Parent class: Command
+
+Responsibilities:
+* Display the path of the current working directory
+
+Collaborators:
+* JShellState
+* Directory

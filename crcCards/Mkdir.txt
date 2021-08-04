@@ -1,0 +1,9 @@
+Class name: Mkdir
+Parent class: Command
+
+Responsibilities:
+* Create a new directory relative to the current directory or its full path
+
+Collaborators:
+* Directory
+

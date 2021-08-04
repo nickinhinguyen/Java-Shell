@@ -1,0 +1,8 @@
+Class name: JShellState
+
+Responsibilities:
+* Hold state of JShell program
+
+Collaborators:
+* Directory
+* DirectoryStack

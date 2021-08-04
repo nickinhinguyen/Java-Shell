@@ -1,0 +1,8 @@
+Class name: Exit
+Parent class: Command
+
+Responsibilities:
+* Quit the program
+
+Collaborators:
+* JShellState

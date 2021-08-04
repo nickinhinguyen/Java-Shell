@@ -1,0 +1,8 @@
+Class name: History
+Parent class: Command
+
+Responsibilities:
+* Show recent commands
+
+Collaborators:
+* JShellState
