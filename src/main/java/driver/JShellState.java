@@ -11,29 +11,28 @@ import java.util.Stack;
  */
 public class JShellState implements IShellState {
     // this is the file system
-    private FileSystem fs;
+    private final FileSystem fs;
     // this is the current directory of JShell program
     private Directory currentDir;
     // this indicates if the program is running or not
     private boolean running;
     // a stack used for push and pop command
-    private Stack<Directory> directoryStack;
-    private ArrayList<String> commandsHistory;
-    private ArrayList<String> correctCommandsHistory;
+    private final Stack<Directory> directoryStack;
+    private final ArrayList<String> commandsHistory;
+    private final ArrayList<String> correctCommandsHistory;
 
     /**
      * Constructs an object that holds JShell's important states including
      * the root directory, current directory, directory stack and a boolean that
      * indicates JShell is running
-     * @param rootDir determines root and current directory of the program
      */
     public JShellState() {
         this.running = true;
         this.fs = FileSystem.createFileSystemInstance();
         this.currentDir = fs.getRoot();
-        this.commandsHistory = new ArrayList<String>();
+        this.commandsHistory = new ArrayList<>();
         this.correctCommandsHistory = new ArrayList<>();
-        this.directoryStack = new Stack<Directory>();
+        this.directoryStack = new Stack<>();
     }
 
     public boolean isRunning() {
