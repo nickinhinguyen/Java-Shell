@@ -3,8 +3,8 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import helper_classes.PathHandler;
 
 /**
  * This class allows user to move between directories

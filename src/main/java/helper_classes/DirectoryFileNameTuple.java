@@ -1,6 +1,6 @@
-package helperClasses;
+package helper_classes;
 
-import fileSystem.Directory;
+import file_system.Directory;
 
 /**
  * This is a class that mimics a tuple in python

@@ -3,8 +3,8 @@ package driver;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import fileSystem.Directory;
-import fileSystem.FileSystem;
+import file_system.Directory;
+import file_system.FileSystem;
 
 public interface IShellState {
     public boolean isRunning();

@@ -1,4 +1,4 @@
-package helperClasses;
+package helper_classes;
 
 /**
  * This class contains methods that help make operations with strings

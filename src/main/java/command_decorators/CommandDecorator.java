@@ -1,4 +1,4 @@
-package commandDecorators;
+package command_decorators;
 
 import commands.Command;
 

@@ -3,9 +3,9 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import helperClasses.DirectoryFileNameTuple;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import helper_classes.DirectoryFileNameTuple;
+import helper_classes.PathHandler;
 
 /**
  * Creates directories in the file system

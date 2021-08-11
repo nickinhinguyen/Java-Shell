@@ -1,12 +1,12 @@
-package fileSystem;
+package file_system;
 
 import java.util.Arrays;
 import java.util.List;
 
 import constants.Constants;
 import constants.Exceptions;
-import helperClasses.DirectoryFileNameTuple;
-import helperClasses.StringHelper;
+import helper_classes.DirectoryFileNameTuple;
+import helper_classes.StringHelper;
 
 /**
  * This class is a virtual file system that stores directories and files.

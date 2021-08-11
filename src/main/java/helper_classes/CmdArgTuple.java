@@ -1,4 +1,4 @@
-package helperClasses;
+package helper_classes;
 
 import java.util.List;
 

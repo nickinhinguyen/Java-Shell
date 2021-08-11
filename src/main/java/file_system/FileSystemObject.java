@@ -1,8 +1,8 @@
-package fileSystem;
+package file_system;
 
 import constants.Constants;
 import constants.Exceptions;
-import helperClasses.StringHelper;
+import helper_classes.StringHelper;
 
 /**
  * This class represents an object in a file system (can be a directory of file)

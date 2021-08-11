@@ -4,10 +4,10 @@ import java.util.List;
 
 import constants.Exceptions;
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.File;
-import fileSystem.FileSystemObject;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import file_system.File;
+import file_system.FileSystemObject;
+import helper_classes.PathHandler;
 
 
 /**

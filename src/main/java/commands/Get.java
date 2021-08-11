@@ -3,7 +3,7 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.Directory;
+import file_system.Directory;
 
 import java.net.*;
 import java.io.*;
@@ -46,7 +46,7 @@ public class Get extends Command{
          * create a file in current directory with founded file name
          * and content
          */
-        new fileSystem.File(fileName, currentDir, content);
+        new file_system.File(fileName, currentDir, content);
 
         return "";
     }

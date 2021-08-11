@@ -1,10 +1,10 @@
-package helperClasses;
+package helper_classes;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.File;
-import fileSystem.FileSystem;
-import fileSystem.FileSystemObject;
+import file_system.Directory;
+import file_system.File;
+import file_system.FileSystem;
+import file_system.FileSystemObject;
 
 /**
  * This is class finds files and directories related to the shell given path

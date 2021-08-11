@@ -1,7 +1,7 @@
 package driver;
 
-import fileSystem.Directory;
-import fileSystem.FileSystem;
+import file_system.Directory;
+import file_system.FileSystem;
 
 import java.util.ArrayList;
 import java.util.Stack;

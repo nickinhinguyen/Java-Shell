@@ -3,9 +3,9 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.FileSystemObject;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import file_system.FileSystemObject;
+import helper_classes.PathHandler;
 
 /**
  * This class finds the content of some directory (recursively if specified)

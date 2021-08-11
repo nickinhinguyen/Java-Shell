@@ -3,8 +3,8 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.File;
-import helperClasses.PathHandler;
+import file_system.File;
+import helper_classes.PathHandler;
 
 /**
  * Cat class Returns content of the file(s) at path(s) that are provided
