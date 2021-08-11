@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"commandDecorators"},{"l":"commands"},{"l":"constants"},{"l":"driver"},{"l":"fileSystem"},{"l":"helperClasses"}];updateSearchResults();
