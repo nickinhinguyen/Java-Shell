@@ -15,9 +15,10 @@ public class StringHelper {
         boolean result = false;
         for (int i = 0; i < str.length(); i++) {
             char currentChar = str.charAt(i);
-            for (int j = 0; j < charArray.length; j++) {
-                if (charArray[j] == currentChar) {
-                    return true;
+            for (char c : charArray) {
+                if (c == currentChar) {
+                    result = true;
+                    break;
                 }
             }
         }
@@ -26,16 +27,16 @@ public class StringHelper {
 
     /**
      * This method multiplies concatenates given string given number of times
-     * @param str
-     * @param numRepeate
-     * @return
+     * @param str any string
+     * @param numRepeat number of repetition
+     * @return repeated string
      */
-    public static String repeate(String str, int numRepeate) {
-        String output = "";
-        for (int i = 0; i <  numRepeate; i++) {
-            output += str;
+    public static String repeat(String str, int numRepeat) {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i <  numRepeat; i++) {
+            output.append(str);
             i++;
         }
-        return output;
+        return output.toString();
     }
 }

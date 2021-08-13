@@ -7,9 +7,9 @@ import java.util.List;
  */
 public class CmdArgTuple {
     // this is first object
-    private String command;
+    private final String command;
     // this is second object
-    private List<String> arguments;
+    private final List<String> arguments;
 
     /**
      * Constructor for the tuple

@@ -36,7 +36,7 @@ public class PathHandler {
      * current directory
      * @param path is the specified path that indicates which file/directory is
      * attempted to be accessed
-     * @return a the file system object indicated by path
+     * @return the file system object indicated by path
      * @throws Exception if the object does not exist at given path
      */
     public static FileSystemObject getFileSystemObject
