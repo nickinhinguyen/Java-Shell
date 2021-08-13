@@ -95,7 +95,7 @@ public class FileSystem {
      * current directory
      * @param path is the specified path that indicates which file/directory is
      * attempted to be accessed
-     * @return a the file system object indicated by path
+     * @return the file system object indicated by path
      * @throws Exception if the object does not exist at given path
      */
     public FileSystemObject getFileSystemObject
@@ -158,11 +158,11 @@ public class FileSystem {
      */
     private String getTreeRepresentationHelper(Directory root, int numIndent) {
         // initialize output with root's name
-        StringBuilder output = new StringBuilder(StringHelper.repeate(" ", numIndent) +
+        StringBuilder output = new StringBuilder(StringHelper.repeat(" ", numIndent) +
                 root.getName() + "\n");
         for (FileSystemObject child: root) {
             if (child instanceof File) {
-                output.append(StringHelper.repeate(" ", numIndent + 1)).append(child.getName()).append("\n");
+                output.append(StringHelper.repeat(" ", numIndent + 1)).append(child.getName()).append("\n");
             } else {
                 output.append(getTreeRepresentationHelper((Directory) child, numIndent + 2));
             }

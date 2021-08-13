@@ -45,7 +45,7 @@ public abstract class FileSystemObject {
 
 
     /** Set name of this FileSystemObject
-     * @throws Exception */
+     * @throws Exception if name contains invalid characters */
     public void setName(String name) throws Exception {
         // check if name is valid, throw error if not
         if (StringHelper.containsAny(name, Constants.INVALID_NAMING_CHAR)) {
