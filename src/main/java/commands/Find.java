@@ -24,7 +24,7 @@ public class Find extends Command{
     /**
      * Searches for the file or directory in a given path
      * @param shellState is the current state of JShell program
-     * @param arguments is the path/s,type and name of file/directory
+     * @param arguments includes all of: [file_path], --type [f/d], --name [file_name]
      * @throws Exception if path, type or name is invalid
      *
      */

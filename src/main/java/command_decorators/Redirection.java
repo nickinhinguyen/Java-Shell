@@ -100,7 +100,7 @@ public class Redirection extends CommandDecorator {
                 lastIndex ++;
             }
             result = result.substring(0, startIndex)
-                    + result.substring(lastIndex, result.length());
+                    + result.substring(lastIndex);
         }
         return result;
 
