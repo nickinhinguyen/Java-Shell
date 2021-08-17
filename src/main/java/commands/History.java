@@ -45,7 +45,7 @@ public class History extends Command {
         // get the history list of commands of shellState
         ArrayList<String> history = shellState.getHistory();
         int i = history.size() - 1 ;
-        String output = "";
+        StringBuilder output = new StringBuilder();
         /*
          *  if numberOfCommand exceed the number of history,
          *  set it to print up to all history
@@ -62,10 +62,10 @@ public class History extends Command {
          * or until all history commands have been printed
          */
         while (numberOfCommand > 0 && i <= history.size()) {
-            output = Integer.toString(i+1) + ". " + history.get(i) + "\n" + output;
+            output.insert(0, i + 1 + ". " + history.get(i) + "\n");
             i--;
             numberOfCommand--;
         }
-        return output;
+        return output.toString();
     }
 }

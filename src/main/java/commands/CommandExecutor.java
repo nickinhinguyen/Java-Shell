@@ -4,11 +4,11 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import commandDecorators.Redirection;
+import command_decorators.Redirection;
 import constants.Constants;
 import constants.Exceptions;
 import driver.IShellState;
-import helperClasses.CmdArgTuple;
+import helper_classes.CmdArgTuple;
 
 /**
  * Decorates and executes command appropriately based on arguments provided

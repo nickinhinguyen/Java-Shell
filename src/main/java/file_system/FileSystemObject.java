@@ -1,8 +1,8 @@
-package fileSystem;
+package file_system;
 
 import constants.Constants;
 import constants.Exceptions;
-import helperClasses.StringHelper;
+import helper_classes.StringHelper;
 
 /**
  * This class represents an object in a file system (can be a directory of file)
@@ -45,7 +45,7 @@ public abstract class FileSystemObject {
 
 
     /** Set name of this FileSystemObject
-     * @throws Exception */
+     * @throws Exception if name contains invalid characters */
     public void setName(String name) throws Exception {
         // check if name is valid, throw error if not
         if (StringHelper.containsAny(name, Constants.INVALID_NAMING_CHAR)) {

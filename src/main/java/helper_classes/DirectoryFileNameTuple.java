@@ -1,15 +1,15 @@
-package helperClasses;
+package helper_classes;
 
-import fileSystem.Directory;
+import file_system.Directory;
 
 /**
  * This is a class that mimics a tuple in python
  */
 public class DirectoryFileNameTuple {
     // this is first directory object in the tuple
-    private Directory directory;
+    private final Directory directory;
     // this is the second object in the tuple
-    private String fileName;
+    private final String fileName;
 
     /**
      * Constructor for a tuple

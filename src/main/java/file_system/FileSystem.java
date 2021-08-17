@@ -1,12 +1,12 @@
-package fileSystem;
+package file_system;
 
 import java.util.Arrays;
 import java.util.List;
 
 import constants.Constants;
 import constants.Exceptions;
-import helperClasses.DirectoryFileNameTuple;
-import helperClasses.StringHelper;
+import helper_classes.DirectoryFileNameTuple;
+import helper_classes.StringHelper;
 
 /**
  * This class is a virtual file system that stores directories and files.
@@ -15,7 +15,7 @@ public class FileSystem {
     // this is a single reference to a File System
     private static FileSystem singleReference = null;
     // this is the root directory of file system
-    private Directory root;
+    private final Directory root;
 
     /**
      * This is a private constructor that creates a new file system
@@ -43,14 +43,9 @@ public class FileSystem {
         return root;
     }
 
-    public FileSystemObject getFileSystem(String path) {
-        return null;
-    }
-
     /**
      * Get the directory from which the path starts (root directory if path is
      * full and current directory if path is relative)
-     * @param shellState is current State of the program
      * @param path is the given path
      * @return directory from which the path starts
      */
@@ -68,16 +63,13 @@ public class FileSystem {
      */
     private List<String> parsePath(String path) {
         // split the path by system file separator (by default: /)
-        List<String> fileSystemObjNameList =
-                Arrays.asList(path.split(Constants.SYSTEM_FILE_PATH_SEPERATOR));
-        return fileSystemObjNameList;
+        return Arrays.asList(path.split(Constants.SYSTEM_FILE_PATH_SEPERATOR));
     }
 
     /**
      * This method is used when trying to create or access some file or directory
      * with the path. Gets the directory from which the file/directory is
      * attempted to be created/accessed from and its name
-     * @param shellState holds state of the program including root directory and
      * current directory
      * @param path is the specified path that indicates which file/directory is
      * attempted to be created/accessed
@@ -100,11 +92,10 @@ public class FileSystem {
     /**
      * This method is used when trying to access some file system object such as
      * file or directory with the path.
-     * @param shellState holds state of the program including root directory and
      * current directory
      * @param path is the specified path that indicates which file/directory is
      * attempted to be accessed
-     * @return a the file system object indicated by path
+     * @return the file system object indicated by path
      * @throws Exception if the object does not exist at given path
      */
     public FileSystemObject getFileSystemObject
@@ -120,7 +111,6 @@ public class FileSystem {
 
     /**
      * Get the file specified by path
-     * @param shellState holds state of the program including root directory and
      * current directory
      * @param path is the specified path(complete or relative)
      * @return path described by path
@@ -137,7 +127,6 @@ public class FileSystem {
 
     /**
      * Get the directory specified by path
-     * @param shellState holds state of the program including root directory and
      * current directory
      * @param path is the specified path(complete or relative)
      * @return directory described by path
@@ -169,17 +158,16 @@ public class FileSystem {
      */
     private String getTreeRepresentationHelper(Directory root, int numIndent) {
         // initialize output with root's name
-        String output = StringHelper.repeate(" ", numIndent) +
-                root.getName() + "\n";
+        StringBuilder output = new StringBuilder(StringHelper.repeat(" ", numIndent) +
+                root.getName() + "\n");
         for (FileSystemObject child: root) {
             if (child instanceof File) {
-                output += StringHelper.repeate(" ", numIndent + 1) +
-                        child.getName() + "\n";
+                output.append(StringHelper.repeat(" ", numIndent + 1)).append(child.getName()).append("\n");
             } else {
-                output += getTreeRepresentationHelper((Directory) child, numIndent + 2);
+                output.append(getTreeRepresentationHelper((Directory) child, numIndent + 2));
             }
         }
-        return output;
+        return output.toString();
     }
 
     /**

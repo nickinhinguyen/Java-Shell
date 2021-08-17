@@ -1,4 +1,4 @@
-package commandDecorators;
+package command_decorators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import commands.Command;
 import constants.Constants;
 import constants.Exceptions;
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.File;
-import helperClasses.DirectoryFileNameTuple;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import file_system.File;
+import helper_classes.DirectoryFileNameTuple;
+import helper_classes.PathHandler;
 
 /**
  * This is a decorator that redirects output to a provided outfile
@@ -100,7 +100,7 @@ public class Redirection extends CommandDecorator {
                 lastIndex ++;
             }
             result = result.substring(0, startIndex)
-                    + result.substring(lastIndex, result.length());
+                    + result.substring(lastIndex);
         }
         return result;
 

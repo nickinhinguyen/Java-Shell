@@ -3,9 +3,9 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.FileSystemObject;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import file_system.FileSystemObject;
+import helper_classes.PathHandler;
 
 /**
  * This class finds the content of some directory (recursively if specified)
@@ -27,20 +27,20 @@ public class Ls extends Command implements RecursiveInterface {
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        String output = "";
+        StringBuilder output = new StringBuilder();
         // if no path is given
         if (arguments.size() == 0) {
             // get content of the current directory
-            output += shellState.getCurrentDir().getContent();
+            output.append(shellState.getCurrentDir().getContent());
         }
         // go through all the paths and print content accordingly
         else {
             for (String path : arguments) {
-                output += path + getContentOfObject(shellState, path) + "\n";
+                output.append(path).append(getContentOfObject(shellState, path)).append("\n");
             }
         }
-        return output.endsWith("\n")
-                ? output.substring(0, output.length() - 1) : output;
+        return output.toString().endsWith("\n")
+                ? output.substring(0, output.length() - 1) : output.toString();
     }
 
     /**
@@ -50,10 +50,9 @@ public class Ls extends Command implements RecursiveInterface {
      * @param shellState that holds root directory of file system
      * @param path is the given path
      * @return string as specified in the description
-     * @throws Exception if path is not valid
      */
     public String getContentOfObject
-    (IShellState shellState, String path) throws Exception {
+    (IShellState shellState, String path) {
         String output = "";
         try {
             FileSystemObject fsObject = PathHandler.getFileSystemObject(shellState, path);
@@ -96,22 +95,22 @@ public class Ls extends Command implements RecursiveInterface {
     /**
      * Lists content of current directory, and subdirectories
      * @param dir given directory
-     * @param parentPath path of parent directory
+     * @param path path of parent directory
      * @return content of current directory, and subdirectories
      */
     public String recrusiveListing(Directory dir, String path) {
         // get current directories content
         String content = dir.getContent();
-        String output = path.equals("") ? content : path + ": \n" + content;
-        output += content.equals("") ? "\n" : "\n\n";
+        StringBuilder output = new StringBuilder(path.equals("") ? content : path + ": \n" + content);
+        output.append(content.equals("") ? "\n" : "\n\n");
         // get content of subdirectories recursively
         for (FileSystemObject child: dir) {
             if (child instanceof Directory) {
                 String childPath = path + "/" + child.getName();
-                output += recrusiveListing((Directory) child, childPath);
+                output.append(recrusiveListing((Directory) child, childPath));
             }
         }
-        return output;
+        return output.toString();
     }
 
     /**
@@ -122,19 +121,19 @@ public class Ls extends Command implements RecursiveInterface {
      */
     @Override
     public String executeRecursively
-    (IShellState shellState, List<String> arguments) throws Exception {
-        String output = "";
+    (IShellState shellState, List<String> arguments) {
+        StringBuilder output = new StringBuilder();
         // if no arguments are provided
         if (arguments.size() == 0) {
-            output += recrusiveListing(shellState.getCurrentDir(), "");
+            output.append(recrusiveListing(shellState.getCurrentDir(), ""));
         } else {
             // for each path, recursively return content of that path
             for (String path: arguments) {
-                output += getRecursiveContent(shellState, path);
+                output.append(getRecursiveContent(shellState, path));
             }
         }
         // return output (remove last line break if present
-        return output.endsWith("\n")
-                ? output.substring(0, output.length() - 1) : output;
+        return output.toString().endsWith("\n")
+                ? output.substring(0, output.length() - 1) : output.toString();
     }
 }

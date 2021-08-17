@@ -4,10 +4,10 @@ import java.util.List;
 
 import constants.Exceptions;
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.File;
-import fileSystem.FileSystemObject;
-import helperClasses.PathHandler;
+import file_system.Directory;
+import file_system.File;
+import file_system.FileSystemObject;
+import helper_classes.PathHandler;
 
 
 /**
@@ -24,7 +24,7 @@ public class Find extends Command{
     /**
      * Searches for the file or directory in a given path
      * @param shellState is the current state of JShell program
-     * @param arguments is the path/s,type and name of file/directory
+     * @param arguments includes all of: [file_path], --type [f/d], --name [file_name]
      * @throws Exception if path, type or name is invalid
      *
      */
@@ -64,8 +64,6 @@ public class Find extends Command{
                     // if it has a child that is of type directory
                     if (((Directory) fsObject).
                             hasChildWithTypeAndName(Directory.class,name)){
-                        //FileSystemObject child = Directory.
-                        //findChild((Directory)fsObject,name);
                         output = "directory found in " + paths;}
                     // if it has a child that is of type file
                     else if (((Directory) fsObject).

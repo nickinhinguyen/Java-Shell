@@ -3,8 +3,8 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import fileSystem.File;
-import helperClasses.PathHandler;
+import file_system.File;
+import helper_classes.PathHandler;
 
 /**
  * Cat class Returns content of the file(s) at path(s) that are provided
@@ -28,7 +28,7 @@ public class Cat extends Command {
          * and get the directory of the requirement file and its name
          */
         checkArgumentsNum(arguments);
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (String path: arguments) {
             try {
                 // retrieve the file object at given path
@@ -38,8 +38,8 @@ public class Cat extends Command {
                  * else concatenate the current file after the previous
                  * file with 3 lines break
                  */
-                output += (output == "") ?
-                        filetoCat.getContent() : ("\n\n" + filetoCat.getContent());
+                output.append((output.toString().equals("")) ?
+                        filetoCat.getContent() : ("\n\n" + filetoCat.getContent()));
             }
             /*
              * if a file given is invalid, concatenate previous input(if any)
@@ -47,12 +47,12 @@ public class Cat extends Command {
              */
             catch (Exception e) {
                 String errorString = "cannot view file " + path + ": " + e.getMessage();
-                output += (output == "") ?
-                        errorString:  "\n\n" + errorString;
+                output.append((output.toString().equals("")) ?
+                        errorString : "\n\n" + errorString);
             }
         }
         // return the contents of all files
-        return output;
+        return output.toString();
     }
 
 

@@ -1,4 +1,4 @@
-package fileSystem;
+package file_system;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,20 +14,20 @@ import constants.Exceptions;
 public class Directory extends FileSystemObject
         implements Iterable<FileSystemObject> {
     // this is a list that holds this directory's children
-    private ArrayList<FileSystemObject> children;
+    private final ArrayList<FileSystemObject> children;
 
     /**
      * This is an Directory Iterator
      */
     public class DirectoryIterator implements Iterator<FileSystemObject> {
         // this is array of objects to loop through
-        private ArrayList<FileSystemObject> childrenArr;
+        private final ArrayList<FileSystemObject> childrenArr;
         // this is a counter
         int counter;
 
         /**
          * Create directory iterator with an array of objects to loop through
-         * @param children
+         * @param children array of children that can be a file or a directory
          */
         public DirectoryIterator(ArrayList<FileSystemObject> children) {
             this.childrenArr = children;
@@ -36,10 +36,7 @@ public class Directory extends FileSystemObject
 
         @Override
         public boolean hasNext() {
-            if (counter >= childrenArr.size() || childrenArr.get(counter) == null) {
-                return false;
-            }
-            return true;
+            return counter < childrenArr.size() && childrenArr.get(counter) != null;
         }
 
         @Override
@@ -55,7 +52,7 @@ public class Directory extends FileSystemObject
     public Directory() {
         // set name and create empty list of children
         super();
-        children = new ArrayList<FileSystemObject>();
+        children = new ArrayList<>();
     }
 
     /**
@@ -67,7 +64,7 @@ public class Directory extends FileSystemObject
     public Directory(String name, Directory parent) throws Exception {
         // assign name, and parent directory, create list of children
         super(name, parent);
-        children = new ArrayList<FileSystemObject>();
+        children = new ArrayList<>();
         // add this directory as a child of parent directory
         if (parent != null) {
             parent.addChild(this);
@@ -92,14 +89,14 @@ public class Directory extends FileSystemObject
 
     @Override
     public String getContent() {
-        String content = "";
+        StringBuilder content = new StringBuilder();
         for (FileSystemObject child : this) {
-            content += child.getName() + "\n";
+            content.append(child.getName()).append("\n");
         }
-        if (!content.equals("")) {
-            content = content.substring(0, content.length() - 1);
+        if (!content.toString().equals("")) {
+            content = new StringBuilder(content.substring(0, content.length() - 1));
         }
-        return content;
+        return content.toString();
     }
 
     /**
@@ -128,6 +125,7 @@ public class Directory extends FileSystemObject
         for (FileSystemObject currentChild : this.children) {
             if (name.equals(currentChild.getName())) {
                 result = true;
+                break;
             }
         }
         return result;
@@ -150,7 +148,7 @@ public class Directory extends FileSystemObject
          */
         for (FileSystemObject currentChild : curDirChildren) {
             if (currentChild.isEqualByClassAndName(classType, name)) {
-                return (FileSystemObject) currentChild;
+                return currentChild;
             }
         }
         // throw exception because if method hasn't returned yet, no child matched
@@ -161,7 +159,7 @@ public class Directory extends FileSystemObject
      * Check if given directory has a child with given name; if name is '.' refer
      * to current directory, if name is '..' refer to parent directory
      * @param currentDir is given directory
-     * @param fileName is the given fileSystemObject name
+     * @param childName is the given fileSystemObject name
      * @return child with matching name
      * @throws Exception if this directory has no such child
      */
@@ -193,7 +191,7 @@ public class Directory extends FileSystemObject
 
     /**
      * Removes directory's child with current name(if present)
-     * @param name given child name
+     * @param fsObject reference child file object
      */
     public void removeChild(FileSystemObject fsObject) {
         children.remove(fsObject);
@@ -201,12 +199,14 @@ public class Directory extends FileSystemObject
 
     /**
      * Removes directory's child with current name(if present)
-     * @param name given child name
+     * @param fsObjectName given child name
      */
     public void removeChildByName(String fsObjectName) {
         try {
             removeChild(findChild(this, fsObjectName));
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -288,13 +288,15 @@ public class Directory extends FileSystemObject
     /**
      * Moves given file system object into the current directory, overwriting
      * existing file in current directory (if they have the same name)
-     * @param fsObject
+     * @param fsObject the file object to be moved in this directory
      */
     public void moveFsObjectIn(FileSystemObject fsObject) {
         removeChildByName(fsObject.getName());
         try {
             fsObject.setParent(this);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -314,7 +316,7 @@ public class Directory extends FileSystemObject
                 FileSystemObject childClone = child.cloneObject();
                 childClone.setParent(clonedDirectory);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {System.out.println(e.getMessage());}
         return clonedDirectory;
     }
 }

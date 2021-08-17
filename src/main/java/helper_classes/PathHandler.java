@@ -1,10 +1,10 @@
-package helperClasses;
+package helper_classes;
 
 import driver.IShellState;
-import fileSystem.Directory;
-import fileSystem.File;
-import fileSystem.FileSystem;
-import fileSystem.FileSystemObject;
+import file_system.Directory;
+import file_system.File;
+import file_system.FileSystem;
+import file_system.FileSystemObject;
 
 /**
  * This is class finds files and directories related to the shell given path
@@ -36,7 +36,7 @@ public class PathHandler {
      * current directory
      * @param path is the specified path that indicates which file/directory is
      * attempted to be accessed
-     * @return a the file system object indicated by path
+     * @return the file system object indicated by path
      * @throws Exception if the object does not exist at given path
      */
     public static FileSystemObject getFileSystemObject
