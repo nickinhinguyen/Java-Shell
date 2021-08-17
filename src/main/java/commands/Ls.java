@@ -27,20 +27,20 @@ public class Ls extends Command implements RecursiveInterface {
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        StringBuilder output = new StringBuilder();
+        String output = "";
         // if no path is given
         if (arguments.size() == 0) {
             // get content of the current directory
-            output.append(shellState.getCurrentDir().getContent());
+            output += shellState.getCurrentDir().getContent();
         }
         // go through all the paths and print content accordingly
         else {
             for (String path : arguments) {
-                output.append(path).append(getContentOfObject(shellState, path)).append("\n");
+                output += path + getContentOfObject(shellState, path) + "\n";
             }
         }
-        return output.toString().endsWith("\n")
-                ? output.substring(0, output.length() - 1) : output.toString();
+        return output.endsWith("\n")
+                ? output.substring(0, output.length() - 1) : output;
     }
 
     /**
@@ -50,9 +50,10 @@ public class Ls extends Command implements RecursiveInterface {
      * @param shellState that holds root directory of file system
      * @param path is the given path
      * @return string as specified in the description
+     * @throws Exception if path is not valid
      */
     public String getContentOfObject
-    (IShellState shellState, String path) {
+    (IShellState shellState, String path) throws Exception {
         String output = "";
         try {
             FileSystemObject fsObject = PathHandler.getFileSystemObject(shellState, path);
@@ -95,22 +96,22 @@ public class Ls extends Command implements RecursiveInterface {
     /**
      * Lists content of current directory, and subdirectories
      * @param dir given directory
-     * @param path path of parent directory
+     * @param parentPath path of parent directory
      * @return content of current directory, and subdirectories
      */
     public String recrusiveListing(Directory dir, String path) {
         // get current directories content
         String content = dir.getContent();
-        StringBuilder output = new StringBuilder(path.equals("") ? content : path + ": \n" + content);
-        output.append(content.equals("") ? "\n" : "\n\n");
+        String output = path.equals("") ? content : path + ": \n" + content;
+        output += content.equals("") ? "\n" : "\n\n";
         // get content of subdirectories recursively
         for (FileSystemObject child: dir) {
             if (child instanceof Directory) {
                 String childPath = path + "/" + child.getName();
-                output.append(recrusiveListing((Directory) child, childPath));
+                output += recrusiveListing((Directory) child, childPath);
             }
         }
-        return output.toString();
+        return output;
     }
 
     /**
@@ -121,19 +122,19 @@ public class Ls extends Command implements RecursiveInterface {
      */
     @Override
     public String executeRecursively
-    (IShellState shellState, List<String> arguments) {
-        StringBuilder output = new StringBuilder();
+    (IShellState shellState, List<String> arguments) throws Exception {
+        String output = "";
         // if no arguments are provided
         if (arguments.size() == 0) {
-            output.append(recrusiveListing(shellState.getCurrentDir(), ""));
+            output += recrusiveListing(shellState.getCurrentDir(), "");
         } else {
             // for each path, recursively return content of that path
             for (String path: arguments) {
-                output.append(getRecursiveContent(shellState, path));
+                output += getRecursiveContent(shellState, path);
             }
         }
         // return output (remove last line break if present
-        return output.toString().endsWith("\n")
-                ? output.substring(0, output.length() - 1) : output.toString();
+        return output.endsWith("\n")
+                ? output.substring(0, output.length() - 1) : output;
     }
 }

@@ -18,7 +18,7 @@ public class Save extends Command {
 
     /**
      * This method will save the current JShell session into a file which will
-     * created overwritten at the given path
+     * created/ over written at the given path
      * @param shellState is the current state of JShell program
      * @param arguments  list of arguments that were passed along with command
      * @throws Exception if any of the paths is invalid
@@ -28,21 +28,21 @@ public class Save extends Command {
         try {
             checkArgumentsNum(arguments);
             String path = arguments.get(0);
-            if (!path.contains("/")) {
+            if (path.indexOf("/") == -1) {
                 throw new Exception(Exceptions.WRONG_PATH_INPUT_MSG);
             }
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bw = new BufferedWriter(fileWriter);
             //add history
-            for (String commandLine : shellState.getHistory()) {
-                bw.write(commandLine);
+            for (String commadLine : shellState.getHistory()) {
+                bw.write(commadLine);
                 bw.newLine();
             }
             bw.write("*****");
             bw.newLine();
             // add content to file
-            for (String commandLine : shellState.getCorrectHistory()) {
-                bw.write(commandLine);
+            for (String commadLine : shellState.getCorrectHistory()) {
+                bw.write(commadLine);
                 bw.newLine();
             }
             // close bufferedWriter

@@ -35,10 +35,10 @@ public class Load extends Command{
                 throw new Exception("Load can only be called at the start of a session");
             }
             String path = arguments.get(0);
-            if (!path.contains("/")) {
+            if (path.indexOf("/") == -1) {
                 throw new Exception(Exceptions.WRONG_PATH_INPUT_MSG);
             }
-            String line;
+            String line = null;
 
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -59,11 +59,11 @@ public class Load extends Command{
                 if (line.equals("*****")) {
                     nextPart = true;
                 }
-                else if (!nextPart) {
+                else if (nextPart == false) {
                     shellState.addHistory(line);
 
                 }
-                else {
+                else if (nextPart == true) {
                     // executeCommand correct command
                     count ++;
                     @SuppressWarnings("unused")

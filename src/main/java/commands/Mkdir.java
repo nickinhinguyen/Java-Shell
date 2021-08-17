@@ -29,7 +29,7 @@ public class Mkdir extends Command {
         // check for arguments
         checkArgumentsNum(arguments);
         // initialize string that holds all error messages that might occur
-        StringBuilder allErrorMsg = new StringBuilder();
+        String allErrorMsg = "";
         // loop through each argument(path)
         for (String path: arguments) {
             try {
@@ -37,13 +37,13 @@ public class Mkdir extends Command {
             }
             catch (Exception e) {
                 String fullErrorMsg = constructFullErrorMsg(path, e.getMessage());
-                allErrorMsg.append((allErrorMsg.toString().equals("")) ?
-                        fullErrorMsg : ("\n" + fullErrorMsg));
+                allErrorMsg += (allErrorMsg == "") ?
+                        fullErrorMsg : ("\n" + fullErrorMsg);
             }
         }
         // throw all the message errors at once if there are any
-        if (!allErrorMsg.toString().equals("")) {
-            throw new Exception(allErrorMsg.toString());
+        if (allErrorMsg != "") {
+            throw new Exception(allErrorMsg);
         }
         return "";
     }

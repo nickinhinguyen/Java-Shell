@@ -64,6 +64,8 @@ public class Find extends Command{
                     // if it has a child that is of type directory
                     if (((Directory) fsObject).
                             hasChildWithTypeAndName(Directory.class,name)){
+                        //FileSystemObject child = Directory.
+                        //findChild((Directory)fsObject,name);
                         output = "directory found in " + paths;}
                     // if it has a child that is of type file
                     else if (((Directory) fsObject).
