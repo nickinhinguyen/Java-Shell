@@ -29,13 +29,13 @@ public class Get extends Command{
         Directory currentDir = shellState.getCurrentDir();
 
         //read through each line of the file and append to content
-        String content = "";
+        StringBuilder content = new StringBuilder();
         URL url = new URL(arguments.get(0));
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(url.openStream()));
         String inputLine;
         while ((inputLine = in.readLine()) != null)
-            content += inputLine + "\n";
+            content.append(inputLine).append("\n");
         in.close();
 
         //get the url to find the file name
@@ -46,7 +46,7 @@ public class Get extends Command{
          * create a file in current directory with founded file name
          * and content
          */
-        new file_system.File(fileName, currentDir, content);
+        new file_system.File(fileName, currentDir, content.toString());
 
         return "";
     }

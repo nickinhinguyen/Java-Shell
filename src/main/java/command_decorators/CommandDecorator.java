@@ -7,7 +7,7 @@ import commands.Command;
  */
 public abstract class CommandDecorator extends Command {
     // this is the command we want to decorate
-    Command command;
+    final Command command;
 
     public CommandDecorator(Command command) {
         // create a command decorator with provided command

@@ -38,7 +38,7 @@ public class Load extends Command{
             if (path.indexOf("/") == -1) {
                 throw new Exception(Exceptions.WRONG_PATH_INPUT_MSG);
             }
-            String line = null;
+            String line;
 
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -59,11 +59,11 @@ public class Load extends Command{
                 if (line.equals("*****")) {
                     nextPart = true;
                 }
-                else if (nextPart == false) {
+                else if (!nextPart) {
                     shellState.addHistory(line);
 
                 }
-                else if (nextPart == true) {
+                else{
                     // executeCommand correct command
                     count ++;
                     @SuppressWarnings("unused")

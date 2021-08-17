@@ -9,9 +9,9 @@ import driver.IShellState;
  */
 public abstract class Command {
     // this is maximum number of arguments that command takes
-    protected int maxArguments;
+    protected final int maxArguments;
     //this is minimum number of arguments that command takes
-    protected int minArguments;
+    protected final int minArguments;
 
     public Command(int maxArguments, int minArguments) {
         this.maxArguments = maxArguments;

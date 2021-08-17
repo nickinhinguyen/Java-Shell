@@ -10,6 +10,6 @@ import driver.IShellState;
  */
 public interface RecursiveInterface {
     // method for a command to execute recursively
-    public String executeRecursively
-    (IShellState shellState, List<String> arguments) throws Exception ;
+    String executeRecursively
+    (IShellState shellState, List<String> arguments);
 }
