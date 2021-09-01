@@ -42,7 +42,6 @@ public class History extends Command {
      */
     private String getHistory(IShellState shellState, int numberOfCommand)
             throws Exception {
-        // get the history list of commands of shellState
         List<String> history = shellState.getHistory();
         int i = history.size() - 1 ;
         StringBuilder output = new StringBuilder();
@@ -52,9 +51,7 @@ public class History extends Command {
          */
         if (numberOfCommand > history.size()) {
             numberOfCommand = history.size();
-            // throw error if negative number of command is given
         } else if (numberOfCommand < 0) {
-            // throw exception
             throw new Exception(Exceptions.INVALID_ARGUMENT);
         }
         /*

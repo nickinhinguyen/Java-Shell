@@ -21,7 +21,6 @@ public class Echo extends Command {
      */
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
-        // check arguments
         checkArgumentsNum(arguments);
         return arguments.get(0);
     }

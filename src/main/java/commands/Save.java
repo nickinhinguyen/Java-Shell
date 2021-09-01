@@ -45,7 +45,6 @@ public class Save extends Command {
                 bw.write(commandLine);
                 bw.newLine();
             }
-            // close bufferedWriter
             bw.close();
             return "";
         }

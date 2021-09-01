@@ -23,9 +23,7 @@ public class Tree extends Command {
     @Override
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
-        // check arguments number
         checkArgumentsNum(arguments);
-        // return the entire file system as a tree
         FileSystem fs = shellState.getFileSystem();
         return fs.getTreeRepresentation();
     }

@@ -24,11 +24,8 @@ public class Cd extends Command {
      */
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception{
-        // check number of arguments
         checkArgumentsNum(arguments);
-        // get the path
         String path = arguments.get(0);
-        // get the wanted directory and make it current directory
         Directory wantedDir = PathHandler.getDirectoryByPath(shellState, path);
         shellState.setCurrentDir(wantedDir);
         return "";

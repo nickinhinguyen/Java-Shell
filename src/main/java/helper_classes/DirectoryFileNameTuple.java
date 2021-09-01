@@ -6,9 +6,7 @@ import file_system.Directory;
  * This is a class that mimics a tuple in python
  */
 public class DirectoryFileNameTuple {
-    // this is first directory object in the tuple
     private final Directory directory;
-    // this is the second object in the tuple
     private final String fileName;
 
     /**

@@ -27,11 +27,8 @@ public class Popd extends Command {
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        // get the diretoryStack
         Stack<Directory> dirStack = shellState.getDirectoryStack();
-        // get the length of the list
         int stackLen = dirStack.size();
-        // if the stack is empty throw exception
         if (stackLen == 0) {
             throw new Exception(Exceptions.POP_EMPTY_STACK);
         }

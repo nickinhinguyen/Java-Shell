@@ -11,13 +11,9 @@ import java.util.Stack;
  * This class holds all the states of the Shell Program
  */
 public class JShellState implements IShellState {
-    // this is the file system
     private final FileSystem fs;
-    // this is the current directory of JShell program
     private Directory currentDir;
-    // this indicates if the program is running or not
     private boolean running;
-    // a stack used for push and pop command
     private final Stack<Directory> directoryStack;
     private final List<String> commandsHistory;
     private final List<String> correctCommandsHistory;

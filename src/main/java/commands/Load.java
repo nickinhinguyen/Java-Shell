@@ -43,16 +43,11 @@ public class Load extends Command{
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            // create a command executor
             CommandExecutor commandExecutor = new CommandExecutor();
-            // initialize variables
             boolean nextPart = false;
             int count = 0;
-            // get current history
             String currentHistory = shellState.getHistory().get(0);
-            // remove current history
             shellState.removeHistory(0);
-            // add previous history
 
             // load the file system
             while((line = bufferedReader.readLine()) != null) {
@@ -66,22 +61,18 @@ public class Load extends Command{
                 else{
                     // executeCommand correct command
                     count ++;
-                    @SuppressWarnings("unused")
-                    String output = commandExecutor.executeCommand(shellState, line);
+                    commandExecutor.executeCommand(shellState, line);
                 }
 
             }
 
-            // close bufferedReader
             bufferedReader.close();
             // remove double history
             for (int i = 0; i<count; i++) {
                 int currentSize = shellState.getHistory().size();
                 shellState.removeHistory(currentSize-1);
             }
-            // add exit
             shellState.addHistory("exit");
-            // add current history
             shellState.addHistory(currentHistory);
             return "";
         }
