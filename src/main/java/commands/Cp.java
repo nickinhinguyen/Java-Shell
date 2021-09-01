@@ -24,9 +24,7 @@ public class Cp extends Command {
     @Override
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
-        // check number of arguments
         checkArgumentsNum(arguments);
-        // copy object
         FileSystem fs = shellState.getFileSystem();
         String oldPath = arguments.get(0);
         String newPath = arguments.get(1);

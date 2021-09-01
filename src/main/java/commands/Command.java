@@ -8,9 +8,7 @@ import driver.IShellState;
  * This is a base class for any commands that might be needed in the program
  */
 public abstract class Command {
-    // this is maximum number of arguments that command takes
     protected final int maxArguments;
-    //this is minimum number of arguments that command takes
     protected final int minArguments;
 
     public Command(int maxArguments, int minArguments) {

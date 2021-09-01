@@ -6,9 +6,7 @@ import java.util.List;
  * This is a class that mimics a tuple in python
  */
 public class CmdArgTuple {
-    // this is first object
     private final String command;
-    // this is second object
     private final List<String> arguments;
 
     /**

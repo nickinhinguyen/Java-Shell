@@ -1,6 +1,7 @@
 package driver;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import file_system.Directory;
@@ -23,11 +24,11 @@ public interface IShellState {
 
     void removeHistory(int index);
 
-    ArrayList<String> getHistory();
+    List<String> getHistory();
 
     void addCorrectHistory(String inputLine);
 
-    ArrayList<String> getCorrectHistory();
+    List<String> getCorrectHistory();
 
     Stack<Directory> getDirectoryStack();
 

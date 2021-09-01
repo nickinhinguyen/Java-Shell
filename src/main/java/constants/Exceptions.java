@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * This class holds all the exception messages in the program
  */
 public class Exceptions {
-    // this are the exception variables
     public static final String WRONG_PATH_INPUT_MSG = "No such file or directory";
     public static final String INVALID_STRING_MSG = "Invalid string input";
     public static final String POP_EMPTY_STACK =

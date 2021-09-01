@@ -56,7 +56,6 @@ public class Get extends Command{
      * @param urlLink is a url link
      */
     public String extractName(String urlLink) {
-        // innit index variable
         int start=0;
         int end=urlLink.length();
 
@@ -74,7 +73,6 @@ public class Get extends Command{
             }
             i--;
         }
-        // return the file name
         return urlLink.substring(start, end);
     }
 }

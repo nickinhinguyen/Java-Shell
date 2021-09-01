@@ -20,9 +20,7 @@ public class Exit extends Command {
      */
     public String executeCommand
     (IShellState shellState, List<String> arguments) throws Exception{
-        // check if there is correct number of arguments, raise exception if not
         checkArgumentsNum(arguments);
-        // stop the program through its state
         shellState.stopRunning();
         return "";
     }

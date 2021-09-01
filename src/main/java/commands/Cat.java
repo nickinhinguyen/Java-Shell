@@ -31,7 +31,6 @@ public class Cat extends Command {
         StringBuilder output = new StringBuilder();
         for (String path: arguments) {
             try {
-                // retrieve the file object at given path
                 File filetoCat = PathHandler.getFileByPath(shellState, path);
                 /*
                  * if this is the first file get cat, do not include line break
@@ -41,17 +40,12 @@ public class Cat extends Command {
                 output.append((output.toString().equals("")) ?
                         filetoCat.getContent() : ("\n\n" + filetoCat.getContent()));
             }
-            /*
-             * if a file given is invalid, concatenate previous input(if any)
-             * with an error string
-             */
             catch (Exception e) {
                 String errorString = "cannot view file " + path + ": " + e.getMessage();
                 output.append((output.toString().equals("")) ?
                         errorString : "\n\n" + errorString);
             }
         }
-        // return the contents of all files
         return output.toString();
     }
 

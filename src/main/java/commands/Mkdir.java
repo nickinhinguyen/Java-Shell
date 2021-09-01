@@ -26,11 +26,8 @@ public class Mkdir extends Command {
      */
     public String executeCommand
     (IShellState shellState, List<String> arguments) throws Exception {
-        // check for arguments
         checkArgumentsNum(arguments);
-        // initialize string that holds all error messages that might occur
         StringBuilder allErrorMsg = new StringBuilder();
-        // loop through each argument(path)
         for (String path: arguments) {
             try {
                 createDir(shellState, path);
@@ -41,7 +38,6 @@ public class Mkdir extends Command {
                         fullErrorMsg : ("\n" + fullErrorMsg));
             }
         }
-        // throw all the message errors at once if there are any
         if (!allErrorMsg.toString().equals("")) {
             throw new Exception(allErrorMsg.toString());
         }
@@ -62,7 +58,6 @@ public class Mkdir extends Command {
          */
         DirectoryFileNameTuple wantedDirAndFileName =
                 PathHandler.getDirectoryAndFileName(shellState, path);
-        // create the new directory
         new Directory(wantedDirAndFileName.getFileName(),
                 wantedDirAndFileName.getDirectory());
     }
