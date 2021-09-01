@@ -43,7 +43,7 @@ public class History extends Command {
     private String getHistory(IShellState shellState, int numberOfCommand)
             throws Exception {
         // get the history list of commands of shellState
-        ArrayList<String> history = shellState.getHistory();
+        List<String> history = shellState.getHistory();
         int i = history.size() - 1 ;
         StringBuilder output = new StringBuilder();
         /*

@@ -30,7 +30,7 @@ public class Load extends Command{
         try {
             checkArgumentsNum(arguments);
             // check if load was the first to be called in new session
-            ArrayList<String> his = shellState.getHistory();
+            List<String> his = shellState.getHistory();
             if (his.size() != 1) {
                 throw new Exception("Load can only be called at the start of a session");
             }
