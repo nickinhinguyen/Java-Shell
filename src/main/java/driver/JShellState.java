@@ -11,12 +11,12 @@ import java.util.Stack;
  * This class holds all the states of the Shell Program
  */
 public class JShellState implements IShellState {
-    private final FileSystem fs;
+    private  FileSystem fs;
     private Directory currentDir;
     private boolean running;
-    private final Stack<Directory> directoryStack;
-    private final List<String> commandsHistory;
-    private final List<String> correctCommandsHistory;
+    private  Stack<Directory> directoryStack;
+    private  List<String> commandsHistory;
+    private  List<String> correctCommandsHistory;
 
     /**
      * Constructs an object that holds JShell's important states including
@@ -30,6 +30,14 @@ public class JShellState implements IShellState {
         this.commandsHistory = new ArrayList<>();
         this.correctCommandsHistory = new ArrayList<>();
         this.directoryStack = new Stack<>();
+    }
+
+    public void loadExistedJShellState(IShellState shellState){
+        this.fs = shellState.getFileSystem();
+        this.currentDir = shellState.getCurrentDir();
+        this.directoryStack = shellState.getDirectoryStack();
+        this.commandsHistory = shellState.getHistory();
+        this.correctCommandsHistory = shellState.getCorrectHistory();
     }
 
     public boolean isRunning() {
