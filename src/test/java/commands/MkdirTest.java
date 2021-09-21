@@ -25,7 +25,6 @@ public class MkdirTest {
 
     @After
     public void tearDown() throws Exception {
-        FileSystem.createFileSystemInstance();
     }
 
     @Test
@@ -46,9 +45,8 @@ public class MkdirTest {
             String output = commandExecutor.executeCommand(shellState, "mkdir test");
             FileSystem fileSystem = shellState.getFileSystem();
             Directory newDir = fileSystem.getDirectoryByPath(fileSystem.getRoot(), "test");
-            assertNotNull(newDir);
         } catch (Exception e) {
-            e.printStackTrace();
+            fail("Could not retrieve new directory using getDirectoryByPath");
         }
     }
 }
