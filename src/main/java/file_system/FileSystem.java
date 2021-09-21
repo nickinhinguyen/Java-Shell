@@ -37,6 +37,16 @@ public class FileSystem {
     }
 
     /**
+     * This is a hack. Because sinceReference is static, we can't reset the
+     * system when running until tests.
+     * This method was added to work around that.
+     * TODO: need a better option, like make the file system non-static.
+     */
+    public static void resetFileSystemInstance() {
+        singleReference = new FileSystem();
+    }
+
+    /**
      * Return root directory of the file system
      */
     public Directory getRoot() {
