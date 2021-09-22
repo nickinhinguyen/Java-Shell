@@ -7,7 +7,7 @@ import helper_classes.StringHelper;
 /**
  * This class represents an object in a file system (can be a directory of file)
  */
-public abstract class FileSystemObject {
+public abstract class FileSystemObject implements java.io.Serializable {
     // this is object's name
     protected String name;
     // this is object's parent object

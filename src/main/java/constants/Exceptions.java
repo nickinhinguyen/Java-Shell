@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Exceptions {
     public static final String WRONG_PATH_INPUT_MSG = "No such file or directory";
+    public static final String NOT_SER_FILE = "file extesion must be .ser";
     public static final String INVALID_STRING_MSG = "Invalid string input";
     public static final String POP_EMPTY_STACK =
             "cannot execute: use pushd to push a directory into the stack first ";
