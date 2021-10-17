@@ -26,12 +26,9 @@ public class Pushd extends Command {
     public String executeCommand(IShellState shellState,  List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        // get current dir
         Directory currentDir = shellState.getCurrentDir();
-        // use cd method to move to the new directory
         Cd cd = new Cd();
         cd.executeCommand(shellState, arguments);
-        // add current dir to the end of the stack
         shellState.getDirectoryStack().push(currentDir);
         return "";
     }

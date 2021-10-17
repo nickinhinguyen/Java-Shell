@@ -24,7 +24,6 @@ public class CommandExecutor {
      */
     public String executeCommand(IShellState shellState, String commandLine)
             throws Exception {
-        // add the input line to the history list
         shellState.addHistory(commandLine);
         if (commandLine.equals("")) {
             return "";
@@ -33,11 +32,9 @@ public class CommandExecutor {
         CmdArgTuple cmdArgTuple = CommandReader.parseCommandLine(commandLine);
         String command = cmdArgTuple.getCommand();
         List<String> arguments = cmdArgTuple.getArguments();
-        // throw exception if invalid command is provided
         if (!CommandReader.isValidCommand(command)) {
             throw new Exception(Exceptions.COMMAND_NOT_FOUND);
         }
-        // get the appropriate command object to execute the command
         Command apprCmdObject = Constants.COMMAND_DIC.get(command);
         // remove optional parameters, make a new list
         List<String> optParams =  new ArrayList<String>();
@@ -70,20 +67,17 @@ public class CommandExecutor {
     (Command command, List<String> arguments, List<String> optParam)
             throws Exception {
         Command decoratedCommand = command;
-        // throw error if there is more than one optional parameter
         if (optParam.size() > 1) {
             throw new Exception("commands can only take 1 optional parameter");
         }
         // decorate with optional parameter if necessary
         if (optParam.size() == 1) {
-            // get appropriate decorator
             String aprropDecoratorName =
                     Constants.OPTIONAL_PARAM_DIC.get(optParam.get(0));
             Class<?> appropDecoratorClass =
                     Class.forName("commandDecorators." + aprropDecoratorName);
             Constructor<?> decConstructor =
                     appropDecoratorClass.getConstructor(Command.class);
-            // decorate command
             decoratedCommand = (Command) decConstructor.newInstance(command);
         }
         // decorate with redirection if necessary
@@ -94,7 +88,6 @@ public class CommandExecutor {
                 decoratedCommand = new Redirection(decoratedCommand);
             }
         }
-        // return decorated command
         return decoratedCommand;
     }
 }

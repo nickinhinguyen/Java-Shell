@@ -1,12 +1,14 @@
 package driver;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import file_system.Directory;
 import file_system.FileSystem;
 
-public interface IShellState {
+public interface IShellState extends Serializable {
     boolean isRunning();
 
     void stopRunning();
@@ -23,12 +25,14 @@ public interface IShellState {
 
     void removeHistory(int index);
 
-    ArrayList<String> getHistory();
+    List<String> getHistory();
 
     void addCorrectHistory(String inputLine);
 
-    ArrayList<String> getCorrectHistory();
+    List<String> getCorrectHistory();
 
     Stack<Directory> getDirectoryStack();
+
+    void loadExistedJShellState(IShellState shellState);
 
 }

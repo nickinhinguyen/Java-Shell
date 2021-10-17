@@ -28,9 +28,8 @@ public class Ls extends Command implements RecursiveInterface {
             throws Exception {
         checkArgumentsNum(arguments);
         StringBuilder output = new StringBuilder();
-        // if no path is given
+        // if no path is given, get content of the current directory
         if (arguments.size() == 0) {
-            // get content of the current directory
             output.append(shellState.getCurrentDir().getContent());
         }
         // go through all the paths and print content accordingly
@@ -123,7 +122,6 @@ public class Ls extends Command implements RecursiveInterface {
     public String executeRecursively
     (IShellState shellState, List<String> arguments) {
         StringBuilder output = new StringBuilder();
-        // if no arguments are provided
         if (arguments.size() == 0) {
             output.append(recrusiveListing(shellState.getCurrentDir(), ""));
         } else {

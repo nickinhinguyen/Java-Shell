@@ -25,10 +25,8 @@ public class CommandReader {
         if (splited.size() == 0) {
             throw new Exception(Exceptions.COMMAND_NOT_FOUND);
         }
-        // get the command, and the arguments
         String command = splited.get(0);
         List<String> arguments = splited.subList(1, splited.size());
-        // return the command - arguments tuple
         return new CmdArgTuple(command, arguments);
     }
 
@@ -46,11 +44,9 @@ public class CommandReader {
         // initialize list of split arguments and current index
         List<String> splittedCommandLine = new ArrayList<String>();
         int currI = 0;
-        // loop through command line
         while (currI < commandLine.length()) {
             char currChar = commandLine.charAt(currI);
             if (currChar == ' ') {
-                // move on if current character is a white space
                 currI += 1;
             } else {
                 /*
@@ -71,7 +67,6 @@ public class CommandReader {
                 currI = endSplitI;
             }
         }
-        // return the split list
         return splittedCommandLine;
     }
 
@@ -87,13 +82,12 @@ public class CommandReader {
         boolean foundEndI = false;
         int endI = 0;
         int currI = startI + 1;
+        // make the current index the wanted end index of the string argument
         while (!foundEndI && currI < str.length()) {
             if (str.charAt(currI) == '"') {
-                // throw error if next character is not a white space
                 if (currI + 1 != str.length() && str.charAt(currI + 1) != ' ') {
                     throw new Exception(Exceptions.INVALID_STRING_MSG);
                 }
-                // make the current index the wanted end index of the string argument
                 endI = currI + 1;
                 foundEndI = true;
             }
