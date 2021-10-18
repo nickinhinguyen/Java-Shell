@@ -11,23 +11,24 @@ import helper_classes.PathHandler;
  */
 public class Cd extends Command {
 
-    public Cd( ) {
+    public Cd() {
         super(1, 1);
     }
 
     /**
      * Switches the current directory that JShell program is in to the one
      * defined by given path
+     *
      * @param shellState is the state of JShell program
-     * @param arguments is list of arguments that were passed along with command
-     * (includes the path of directory to be switched to)
+     * @param arguments  is list of arguments that were passed along with command
+     *                   (includes the path of directory to be switched to)
      */
     public String executeCommand(IShellState shellState, List<String> arguments)
-            throws Exception{
+            throws Exception {
         checkArgumentsNum(arguments);
         String path = arguments.get(0);
-        Directory wantedDir = PathHandler.getDirectoryByPath(shellState, path);
-        shellState.setCurrentDir(wantedDir);
+        Directory target = PathHandler.getDirectoryByPath(shellState, path);
+        shellState.setCurrentDir(target);
         return "";
     }
 

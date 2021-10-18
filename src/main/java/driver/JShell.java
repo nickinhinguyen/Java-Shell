@@ -2,7 +2,7 @@ package driver;
 
 import java.util.Scanner;
 
-import commands.CommandExecutor;
+import commands.CommandController;
 
 /**
  * This is the Shell that prompts user for input and prints the output
@@ -12,7 +12,7 @@ public class JShell {
 
     public static void main(String[] args) {
         JShellState shellState = new JShellState();
-        CommandExecutor commandExecutor = new CommandExecutor();
+        CommandController commandExecutor = new CommandController();
         Scanner in = new Scanner(System.in);
         // keep reading the command and executing it until user exits the program
         while (shellState.isRunning()) {
@@ -26,6 +26,7 @@ public class JShell {
                 }
             }
             catch (Exception e) {
+                // TODO: change to CommandException everywhere.
                 System.out.println(e.getMessage());
             }
         }

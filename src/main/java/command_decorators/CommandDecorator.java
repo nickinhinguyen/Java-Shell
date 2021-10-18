@@ -2,6 +2,8 @@ package command_decorators;
 
 import commands.Command;
 
+
+// This is a builder!
 /**
  * This is an abstract class that is a base for all decorators of the command
  */

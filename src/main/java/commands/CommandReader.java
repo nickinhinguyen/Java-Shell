@@ -1,4 +1,5 @@
 package commands;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class CommandReader {
     /**
      * Parses the input into a tuple that holds command as String and arguments
      * as List of Strings
+     *
      * @param commandLine the input command line
      * @return CmdArgTuple the tuple that holds command and its arguments
      */
@@ -34,15 +36,16 @@ public class CommandReader {
      * Split a string into 'arguments' where 'arguments' words surrounded by
      * white spaces. Anything surrounded by double quotes is considered as one
      * argument
+     *
      * @param commandLine is the
      * @return the list of arguments
      * @throws Exception if STRING input is invalid (i.e STRING input has
-     * quotation mark inside it"
+     *                   quotation mark inside it"
      */
     private static List<String> manuallySplit(String commandLine)
             throws Exception {
         // initialize list of split arguments and current index
-        List<String> splittedCommandLine = new ArrayList<String>();
+        List<String> splittedCommandLine = new ArrayList<>();
         int currI = 0;
         while (currI < commandLine.length()) {
             char currChar = commandLine.charAt(currI);
@@ -53,9 +56,17 @@ public class CommandReader {
                  * else, current character is the start of an argument that is needed
                  * to be split. Get the end index of the argument and split it.
                  */
-                int endSplitI = (currChar == '"') ?
-                        getEndStringIndex(commandLine, currI) :
-                        getEndNonStrIndex(commandLine, currI);
+//                int endSplitI = (currChar == '"') ?
+//                        getEndStringIndex(commandLine, currI) :
+//                        getEndNonStrIndex(commandLine, currI);
+
+                int endSplitI;
+                if (currChar == '"') {
+                    endSplitI = getEndStringIndex(commandLine, currI);
+                } else {
+                    endSplitI = getEndNonStrIndex(commandLine, currI);
+                }
+
                 String splittedArgument = commandLine.substring(currI, endSplitI);
                 // remove the quotes if the argument is the STRING argument
                 if (currChar == '"') {
@@ -72,7 +83,8 @@ public class CommandReader {
 
     /**
      * Get end of a STRING input inside given string that starts at given index
-     * @param str given string
+     *
+     * @param str    given string
      * @param startI given start index
      * @return index of the last character of the STRING input
      * @throws Exception if STRING input is invalid
@@ -91,7 +103,7 @@ public class CommandReader {
                 endI = currI + 1;
                 foundEndI = true;
             }
-            currI ++;
+            currI++;
         }
         // throw error if no other quotation mark was found
         if (endI == 0) {
@@ -102,7 +114,8 @@ public class CommandReader {
 
     /**
      * Get end of an input surrounded by spaces
-     * @param str given string
+     *
+     * @param str    given string
      * @param startI given start index
      * @return index of the last character of the input surrounded by spaces
      */
@@ -121,6 +134,7 @@ public class CommandReader {
 
     /**
      * This method checks if the given command is valid
+     *
      * @param command the input command
      * @return boolean that indicates if command is valid
      */

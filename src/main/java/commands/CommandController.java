@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import command_decorators.Redirection;
+import constants.CommandException;
 import constants.Constants;
 import constants.Exceptions;
 import driver.IShellState;
@@ -13,31 +14,39 @@ import helper_classes.CmdArgTuple;
 /**
  * Decorates and executes command appropriately based on arguments provided
  */
-public class CommandExecutor {
+public class CommandController {
 
     /**
-     * Executes the provided command line accordingly
+     * Executes the provided command line
      * @param shellState is the state of the program
-     * @param commandLine is the given command line
+     * @param commandLine is the given command line and arguments
      * @return string that is given back as command is executed
      * @throws Exception if any of the provided arguments is invalid
      */
     public String executeCommand(IShellState shellState, String commandLine)
             throws Exception {
+        // TODO: clean this up.
         shellState.addHistory(commandLine);
         if (commandLine.equals("")) {
             return "";
         }
         // use command reader to separate command with arguments
         CmdArgTuple cmdArgTuple = CommandReader.parseCommandLine(commandLine);
-        String command = cmdArgTuple.getCommand();
+        Command command = getCommand(cmdArgTuple);
         List<String> arguments = cmdArgTuple.getArguments();
-        if (!CommandReader.isValidCommand(command)) {
-            throw new Exception(Exceptions.COMMAND_NOT_FOUND);
-        }
-        Command apprCmdObject = Constants.COMMAND_DIC.get(command);
+        List<String> optParams = getOptionalParamsAndRemoveFrom(arguments);
+
+        // decorate command appropriately
+        command = decorateCommand(command, arguments, optParams);
+        String result = command.executeCommand(shellState, arguments);
+        // if command doesn't result in an error add it to STD OUPOUT history
+        shellState.addCorrectHistory(commandLine);
+        return result;
+    }
+
+    private List<String> getOptionalParamsAndRemoveFrom(List<String> arguments) {
         // remove optional parameters, make a new list
-        List<String> optParams =  new ArrayList<String>();
+        List<String> optParams =  new ArrayList<>();
         for (String arg : arguments) {
             if (Constants.OPTIONAL_PARAM_DIC.containsKey(arg)) {
                 optParams.add(arg);
@@ -46,12 +55,15 @@ public class CommandExecutor {
         for (String optParam : optParams) {
             arguments.remove(optParam);
         }
-        // decorate command appropriately
-        apprCmdObject = decorateCommand(apprCmdObject, arguments, optParams);
-        String result = apprCmdObject.executeCommand(shellState, arguments);
-        // if command doesn't result in an error add it to STD OUPOUT history
-        shellState.addCorrectHistory(commandLine);
-        return result;
+        return optParams;
+    }
+
+    private Command getCommand(CmdArgTuple cmdArgTuple) throws CommandException {
+        String command = cmdArgTuple.getCommand();
+        if (!CommandReader.isValidCommand(command)) {
+            throw new CommandException(Exceptions.COMMAND_NOT_FOUND);
+        }
+        return Constants.COMMAND_DIC.get(command);
     }
 
     /**

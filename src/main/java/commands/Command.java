@@ -2,6 +2,7 @@ package commands;
 
 import java.util.List;
 
+import constants.CommandException;
 import driver.IShellState;
 
 /**
@@ -27,12 +28,14 @@ public abstract class Command {
     abstract public String executeCommand
             (IShellState shellState, List<String> arguments) throws Exception;
 
+    // TODO: write Javadoc
     protected void checkArgumentsNum(List<String> arguments) throws Exception {
         if (arguments.size() > maxArguments) {
-            throw new Exception("too many arguments provided");
+            // TODO: add this message to class constants.Exceptions
+            throw new CommandException("too many arguments provided");
         }
         if (arguments.size() < minArguments) {
-            throw new Exception("too little arguments provided");
+            throw new CommandException("too little arguments provided");
         }
     }
 
