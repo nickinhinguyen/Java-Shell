@@ -1,9 +1,8 @@
 package commands;
 
-import driver.JShell;
 import driver.JShellState;
 import file_system.Directory;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +13,13 @@ import static org.junit.Assert.*;
 
 public class MkdirTest {
     JShellState shellState;
-    CommandExecutor commandExecutor;
+    CommandController commandExecutor;
 
     @Before
     public void setUp() throws Exception {
-        FileSystem.resetFileSystemInstance();
+        VirtualFileSystem.resetFileSystemInstance();
         shellState = new JShellState();
-        commandExecutor = new CommandExecutor();
+        commandExecutor = new CommandController();
     }
 
     @After
@@ -43,7 +42,7 @@ public class MkdirTest {
     public void testExecuteCommandNewDir() {
         try {
             String output = commandExecutor.executeCommand(shellState, "mkdir test");
-            FileSystem fileSystem = shellState.getFileSystem();
+            VirtualFileSystem fileSystem = shellState.getFileSystem();
             Directory newDir = fileSystem.getDirectoryByPath(fileSystem.getRoot(), "test");
         } catch (Exception e) {
             fail("Could not retrieve new directory using getDirectoryByPath");

@@ -4,10 +4,12 @@ import constants.Constants;
 import constants.Exceptions;
 import helper_classes.StringHelper;
 
+import java.io.Serializable;
+
 /**
  * This class represents an object in a file system (can be a directory of file)
  */
-public abstract class FileSystemObject {
+public abstract class FileSystemObject implements Serializable {
     // this is object's name
     protected String name;
     // this is object's parent object

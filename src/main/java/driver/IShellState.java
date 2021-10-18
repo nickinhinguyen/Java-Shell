@@ -1,18 +1,18 @@
 package driver;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Stack;
 
 import file_system.Directory;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 
-public interface IShellState {
+public interface IShellState extends Serializable {
     boolean isRunning();
 
     void stopRunning();
 
-    FileSystem getFileSystem();
+    VirtualFileSystem getFileSystem();
 
     Directory getRootDir();
 

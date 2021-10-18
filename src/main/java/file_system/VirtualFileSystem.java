@@ -1,5 +1,6 @@
 package file_system;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,16 +12,16 @@ import helper_classes.StringHelper;
 /**
  * This class is a virtual file system that stores directories and files.
  */
-public class FileSystem {
+public class VirtualFileSystem implements Serializable {
     // this is a single reference to a File System
-    private static FileSystem singleReference = null;
+    private static VirtualFileSystem singleReference = null;
     // this is the root directory of file system
     private final Directory root;
 
     /**
      * This is a private constructor that creates a new file system
      */
-    private FileSystem() {
+    private VirtualFileSystem() {
         root = new Directory();
     }
 
@@ -29,9 +30,9 @@ public class FileSystem {
      * return the reference to the file system
      * @return the reference to a single file system
      */
-    public static FileSystem createFileSystemInstance() {
+    public static VirtualFileSystem createFileSystemInstance() {
         if (singleReference == null) {
-            singleReference = new FileSystem();
+            singleReference = new VirtualFileSystem();
         }
         return singleReference;
     }
@@ -43,7 +44,7 @@ public class FileSystem {
      * TODO: need a better option, like make the file system non-static.
      */
     public static void resetFileSystemInstance() {
-        singleReference = new FileSystem();
+        singleReference = new VirtualFileSystem();
     }
 
     /**
