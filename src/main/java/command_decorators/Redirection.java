@@ -100,7 +100,7 @@ public class Redirection extends CommandDecorator {
                 lastIndex ++;
             }
             // print given string contain error msg to stderr
-            System.err.println(result.substring(startIndex, lastIndex));
+            System.err.println("Redirection removeError: " + result.substring(startIndex, lastIndex));
             result = result.substring(0, startIndex)
                     + result.substring(lastIndex);
         }
