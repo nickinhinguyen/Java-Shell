@@ -64,7 +64,7 @@ public class Redirection extends CommandDecorator {
     }
 
     /**
-     * Removes the error messages from the given string
+     * Forward the error messages to StdErr and return the given string without errors
      * @param result is the given string
      * @return the given string without error messages
      */
@@ -99,6 +99,8 @@ public class Redirection extends CommandDecorator {
             if (lastIndex < result.length()) {
                 lastIndex ++;
             }
+            // print given string contain error msg to stderr
+            System.err.println("Redirection removeError: " + result.substring(startIndex, lastIndex));
             result = result.substring(0, startIndex)
                     + result.substring(lastIndex);
         }
