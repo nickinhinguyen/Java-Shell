@@ -6,13 +6,12 @@ Java (1.7 or later)
 ## Using the program
 
 ### Compiling
-To compile the code, run the command bellow in the terminal
-Note: Make sure you're running it from the root directory
-```
-$ javac driver/JShell.java
-```
+To compile the code, run build the JShell in IntelliJ
 
 ### Starting the Program
+click run in IntelliJ.
+
+Or in terminal, go to build/classes/java/main and run
 
 ```
 $ java driver/JShell
