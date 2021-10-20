@@ -1,8 +1,6 @@
 package driver;
 
-import java.util.Scanner;
-
-import commands.CommandExecutor;
+import commands.CommandController;
 import view.CommandLineUI;
 import view.ICommandLineUI;
 
@@ -14,8 +12,8 @@ public class JShell {
 
     public static void main(String[] args){
         JShellState shellState = new JShellState();
-        CommandExecutor commandExecutor = new CommandExecutor();
-        ICommandLineUI ui = new CommandLineUI(shellState, commandExecutor);
+        CommandController commandController = new CommandController();
+        ICommandLineUI ui = new CommandLineUI(shellState, commandController);
         ui.scanCommand();
     }
 }

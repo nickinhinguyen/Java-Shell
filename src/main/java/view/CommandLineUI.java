@@ -1,7 +1,6 @@
 package view;
 
-import commands.Command;
-import commands.CommandExecutor;
+import commands.CommandController;
 import driver.IShellState;
 import driver.JShellState;
 
@@ -9,12 +8,12 @@ import java.util.Scanner;
 
 public class CommandLineUI implements ICommandLineUI {
     public IShellState shellState;
-    public CommandExecutor executor;
+    public CommandController executor;
     public Scanner in;
 
-    public CommandLineUI(JShellState shellState, CommandExecutor commandExecutor) {
+    public CommandLineUI(JShellState shellState, CommandController commandController) {
         this.shellState = shellState;
-        this.executor = commandExecutor;
+        this.executor = commandController;
         this.in = new Scanner(System.in);
     }
 
