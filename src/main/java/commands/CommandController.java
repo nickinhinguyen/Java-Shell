@@ -13,7 +13,7 @@ import helper_classes.CmdArgTuple;
 /**
  * Decorates and executes command appropriately based on arguments provided
  */
-public class CommandExecutor {
+public class CommandController {
 
     /**
      * Executes the provided command line accordingly
