@@ -9,11 +9,34 @@ import constants.Constants;
 import constants.Exceptions;
 import driver.IShellState;
 import helper_classes.CmdArgTuple;
+import repository.DataRepositoryInterface;
 
 /**
  * Decorates and executes command appropriately based on arguments provided
  */
 public class CommandController {
+
+    public CommandController(DataRepositoryInterface repository) {
+
+        Constants.COMMAND_DIC.put("get", new Get());
+        Constants.COMMAND_DIC.put("exit", new Exit());
+        Constants.COMMAND_DIC.put("mkdir", new Mkdir());
+        Constants.COMMAND_DIC.put("cd", new Cd());
+        Constants.COMMAND_DIC.put("ls", new Ls());
+        Constants.COMMAND_DIC.put("pwd", new Pwd());
+        Constants.COMMAND_DIC.put("pushd", new Pushd());
+        Constants.COMMAND_DIC.put("popd", new Popd());
+        Constants.COMMAND_DIC.put("history", new History());
+        Constants.COMMAND_DIC.put("cat", new Cat());
+        Constants.COMMAND_DIC.put("echo", new Echo());
+        Constants.COMMAND_DIC.put("man", new Man());
+        Constants.COMMAND_DIC.put("mv", new Mv());
+        Constants.COMMAND_DIC.put("cp", new Cp());
+        Constants.COMMAND_DIC.put("tree", new Tree());
+        Constants.COMMAND_DIC.put("save", new Save(repository));
+        Constants.COMMAND_DIC.put("load", new Load(repository));
+        Constants.COMMAND_DIC.put("find", new Find());
+    }
 
     /**
      * Executes the provided command line accordingly
