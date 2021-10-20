@@ -3,13 +3,17 @@ package commands;
 import java.util.List;
 import constants.Exceptions;
 import driver.IShellState;
+import repository.DataRepositoryInterface;
+
 /**
  * This class is responsible for loading up the previously saved JShell session
  */
 public class Load extends Command{
+    private DataRepositoryInterface repository;
 
-    public Load() {
+    public Load(DataRepositoryInterface repository) {
         super(1, 1);
+        this.repository = repository;
     }
 
     /**
@@ -31,12 +35,12 @@ public class Load extends Command{
             throw new Exception(Exceptions.WRONG_PATH_INPUT_MSG);
         }
 
-        loadFromRepository(shellState.getFileSystem(), shellState, path);
+        loadFromRepository(shellState, path);
         return "";
     }
 
-    public void loadFromRepository(DataRepositoryInterface repo, IShellState shellState, String path ) throws Exception {
-        repo.loadJShell(shellState, path);
+    public void loadFromRepository(IShellState shellState, String path ) throws Exception {
+        repository.loadJShell(shellState, path);
     }
 
 }

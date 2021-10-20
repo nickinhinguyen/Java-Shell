@@ -4,13 +4,17 @@ import org.apache.commons.io.FilenameUtils;
 import java.util.List;
 import constants.Exceptions;
 import driver.IShellState;
+import repository.DataRepositoryInterface;
+
 /**
  * This class is responsible for saving the current JShell session into a file
  */
 public class Save extends Command {
+    private DataRepositoryInterface repository;
 
-    public Save() {
+    public Save(DataRepositoryInterface repository) {
         super(1, 1);
+        this.repository = repository;
     }
 
     /**
@@ -32,13 +36,13 @@ public class Save extends Command {
         if (!fileExt.equals("ser")){
             throw new Exception(Exceptions.NOT_SER_FILE);
         }
-        saveToRepository(shellState.getFileSystem(), shellState, path);
+        saveToRepository( shellState, path);
         return "";
 
     }
 
-    public void saveToRepository(DataRepositoryInterface repo, IShellState shellState, String path ) throws Exception {
-        repo.writeJShell(shellState, path);
+    public void saveToRepository(IShellState shellState, String path ) throws Exception {
+        repository.writeJShell(shellState, path);
     }
 
 

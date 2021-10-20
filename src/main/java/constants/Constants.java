@@ -40,28 +40,6 @@ public class Constants {
     public static final Hashtable<String, Command> COMMAND_DIC =
             new Hashtable<String, Command>();
 
-    static {
-        COMMAND_DIC.put("get", new Get());
-        COMMAND_DIC.put("exit", new Exit());
-        COMMAND_DIC.put("mkdir", new Mkdir());
-        COMMAND_DIC.put("cd", new Cd());
-        COMMAND_DIC.put("ls", new Ls());
-        COMMAND_DIC.put("pwd", new Pwd());
-        COMMAND_DIC.put("pushd", new Pushd());
-        COMMAND_DIC.put("popd", new Popd());
-        COMMAND_DIC.put("history", new History());
-        COMMAND_DIC.put("cat", new Cat());
-        COMMAND_DIC.put("echo", new Echo());
-        COMMAND_DIC.put("man", new Man());
-        COMMAND_DIC.put("mv", new Mv());
-        COMMAND_DIC.put("cp", new Cp());
-        COMMAND_DIC.put("tree", new Tree());
-        COMMAND_DIC.put("save", new Save());
-        COMMAND_DIC.put("load", new Load());
-        COMMAND_DIC.put("find", new Find());
-
-    }
-
     //optional parameters dictionary maps optional parameter to its decorator
     public static final Hashtable<String, String> OPTIONAL_PARAM_DIC =
             new Hashtable<String, String>();
