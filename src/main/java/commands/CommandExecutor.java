@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import command_decorators.Redirection;
+import command_decorators.RedirectionDecorator;
 import constants.Constants;
 import constants.Exceptions;
 import driver.IShellState;
@@ -85,7 +85,7 @@ public class CommandExecutor {
         if (argLen >= 2) {
             if (arguments.get(argLen - 2).equals(Constants.REDIRECTION_APPEND) ||
                     arguments.get(argLen - 2).equals(Constants.REDIRECTION_OVERWRITE)) {
-                decoratedCommand = new Redirection(decoratedCommand);
+                decoratedCommand = new RedirectionDecorator(decoratedCommand);
             }
         }
         return decoratedCommand;

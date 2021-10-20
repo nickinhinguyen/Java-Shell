@@ -15,9 +15,9 @@ import helper_classes.PathHandler;
 /**
  * This is a decorator that redirects output to a provided outfile
  */
-public class Redirection extends CommandDecorator {
+public class RedirectionDecorator extends CommandDecorator {
 
-    public Redirection(Command command) {
+    public RedirectionDecorator(Command command) {
         super(command);
     }
 
