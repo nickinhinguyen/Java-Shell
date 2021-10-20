@@ -39,7 +39,7 @@ public class Load extends Command{
         return "";
     }
 
-    public void loadFromRepository(IShellState shellState, String path ) throws Exception {
+    private void loadFromRepository(IShellState shellState, String path ) throws Exception {
         repository.loadJShell(shellState, path);
     }
 

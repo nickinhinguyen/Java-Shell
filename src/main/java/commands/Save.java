@@ -41,7 +41,7 @@ public class Save extends Command {
 
     }
 
-    public void saveToRepository(IShellState shellState, String path ) throws Exception {
+    private void saveToRepository(IShellState shellState, String path ) throws Exception {
         repository.writeJShell(shellState, path);
     }
 
