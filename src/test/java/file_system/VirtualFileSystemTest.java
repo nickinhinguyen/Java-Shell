@@ -9,21 +9,21 @@ import org.junit.jupiter.api.TestInstance;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class FileSystemTest {
+public class VirtualFileSystemTest {
 
-    private FileSystem fs;
+    private VirtualFileSystem fs;
 
     private Directory root;
 
     @BeforeAll
     public void setUp() {
-        fs = FileSystem.createFileSystemInstance();
+        fs = VirtualFileSystem.createFileSystemInstance();
         root = fs.getRoot();
     }
 
     @Test
     public void createFileSystemInstance_testSingleton() {
-        FileSystem fs2 = FileSystem.createFileSystemInstance();
+        VirtualFileSystem fs2 = VirtualFileSystem.createFileSystemInstance();
         assertEquals(fs, fs2);
     }
 

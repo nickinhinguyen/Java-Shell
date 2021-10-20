@@ -3,7 +3,7 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 
 /**
  * Display the entire file system as a tree
@@ -24,7 +24,7 @@ public class Tree extends Command {
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         return fs.getTreeRepresentation();
     }
 

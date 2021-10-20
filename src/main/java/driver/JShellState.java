@@ -1,7 +1,7 @@
 package driver;
 
 import file_system.Directory;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Stack;
  * This class holds all the states of the Shell Program
  */
 public class JShellState implements IShellState {
-    private  FileSystem fs;
+    private VirtualFileSystem fs;
     private Directory currentDir;
     private boolean running;
     private  Stack<Directory> directoryStack;
@@ -25,7 +25,7 @@ public class JShellState implements IShellState {
      */
     public JShellState() {
         this.running = true;
-        this.fs = FileSystem.createFileSystemInstance();
+        this.fs = VirtualFileSystem.createFileSystemInstance();
         this.currentDir = fs.getRoot();
         this.commandsHistory = new ArrayList<>();
         this.correctCommandsHistory = new ArrayList<>();
@@ -48,7 +48,7 @@ public class JShellState implements IShellState {
         running = false;
     }
 
-    public FileSystem getFileSystem() {
+    public VirtualFileSystem getFileSystem() {
         return fs;
     }
 

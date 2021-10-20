@@ -3,7 +3,7 @@ package helper_classes;
 import driver.IShellState;
 import file_system.Directory;
 import file_system.File;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 import file_system.FileSystemObject;
 
 /**
@@ -25,7 +25,7 @@ public class PathHandler {
      */
     public static DirectoryFileNameTuple getDirectoryAndFileName
     (IShellState shellState, String path) throws Exception {
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         return fs.getDirectoryAndFileName(shellState.getCurrentDir(), path);
     }
 
@@ -41,7 +41,7 @@ public class PathHandler {
      */
     public static FileSystemObject getFileSystemObject
     (IShellState shellState, String path) throws Exception {
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         return fs.getFileSystemObject(shellState.getCurrentDir(), path);
     }
 
@@ -55,7 +55,7 @@ public class PathHandler {
      */
     public static File getFileByPath
     (IShellState shellState, String path) throws Exception {
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         return fs.getFileByPath(shellState.getCurrentDir(), path);
     }
 
@@ -70,7 +70,7 @@ public class PathHandler {
      */
     public static Directory getDirectoryByPath
     (IShellState shellState, String path) throws Exception {
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         return fs.getDirectoryByPath(shellState.getCurrentDir(), path);
     }
 }

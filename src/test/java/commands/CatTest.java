@@ -2,7 +2,7 @@ package commands;
 
 import constants.Exceptions;
 import driver.JShellState;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 import file_system.File;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class CatTest {
     private Cat cat;
 
     private JShellState shell;
-    private FileSystem fs;
+    private VirtualFileSystem fs;
     private List<String> arg;
 
     // run before each instead of before all to reset all the mock objects
@@ -31,7 +31,7 @@ public class CatTest {
     public void setUp() throws Exception {
         cat = new Cat();
         shell = mock(JShellState.class);
-        fs = mock(FileSystem.class);
+        fs = mock(VirtualFileSystem.class);
         arg =  new ArrayList<>();
         when(shell.getFileSystem()).thenReturn(fs);
     }

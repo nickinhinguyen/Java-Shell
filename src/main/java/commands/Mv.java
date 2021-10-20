@@ -3,7 +3,7 @@ package commands;
 import java.util.List;
 
 import driver.IShellState;
-import file_system.FileSystem;
+import file_system.VirtualFileSystem;
 
 /**
  * Moves a file or directory from one path to another
@@ -25,7 +25,7 @@ public class Mv extends Command {
     public String executeCommand(IShellState shellState, List<String> arguments)
             throws Exception {
         checkArgumentsNum(arguments);
-        FileSystem fs = shellState.getFileSystem();
+        VirtualFileSystem fs = shellState.getFileSystem();
         String oldPath = arguments.get(0);
         String newPath = arguments.get(1);
         fs.moveFsObject(shellState.getCurrentDir(), oldPath, newPath);
