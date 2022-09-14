@@ -39,7 +39,7 @@ public class VirtualFileSystem implements Serializable {
 
     /**
      * This is a hack. Because sinceReference is static, we can't reset the
-     * system when running until tests.
+     * system when running unit tests.
      * This method was added to work around that.
      * TODO: need a better option, like make the file system non-static.
      */

@@ -6,14 +6,15 @@ Java (1.7 or later)
 ## Using the program
 
 ### Compiling
-To compile the code, run the command bellow in the terminal
-Note: Make sure you're running it from the root directory
+* Open a terminal. (It's in the row of tabs at the bottom of this window.) 
+* Copy and paste these two commands:
 ```
-$ javac driver/JShell.java
+cd src/main/java   # This opens the src/main/java folder
+javac driver/*.java   # This compiles the whole program.
 ```
 
 ### Starting the Program
-
+* Run the program:
 ```
 $ java driver/JShell
 ```

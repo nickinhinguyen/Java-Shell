@@ -46,7 +46,7 @@ public class Save extends Command {
         fileOut.close();
     }
 
-    private void saveToFile1(@org.jetbrains.annotations.NotNull IShellState shellState, String path) throws IOException {
+    private void saveToFile1(IShellState shellState, String path) throws IOException {
         FileWriter fileWriter = new FileWriter(path);
         BufferedWriter bw = new BufferedWriter(fileWriter);
         //add history
